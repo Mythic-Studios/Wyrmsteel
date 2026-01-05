@@ -1,0 +1,37 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
+	"parent": "minecraft:item/handheld",
+	"textures": {
+		"layer0": "wyrmsteel:item/sickle_dungeons"
+	},
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [54.5, 90, 0],
+			"translation": [0, 6.75, 3.25]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [54.5, -90, 0],
+			"translation": [0, 6.75, 3]
+		},
+		"firstperson_righthand": {
+			"rotation": [139, 75.66, -138.12],
+			"translation": [4.5, 3.25, -5.75]
+		},
+		"firstperson_lefthand": {
+			"rotation": [-57.33, -67.92, -61.23],
+			"translation": [5.5, 3.25, -5.75]
+		},
+		"ground": {
+			"translation": [0, 5, 0],
+            "scale": [0.5, 0.5, 0.5]
+		},
+		"gui": {
+			"translation": [1, 1, 0]
+		},
+		"head": {
+			"rotation": [102.5, -90, 0],
+			"translation": [7.25, -24.75, 1.25]
+		}
+	}
+}

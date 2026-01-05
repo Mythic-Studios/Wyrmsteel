@@ -1,0 +1,26 @@
+{
+  "required": true,
+  "package": "org.mythicgoose.wyrmsteel.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "AbstractContainerMenuMixin",
+    "InventoryMenuMixin",
+    "LivingEntityMixin",
+    "PlayerInventoryExtension",
+    "PlayerWeaponStashMixin",
+    "SlotAccessor"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  },
+  "client": [
+    "CreativeInventoryScreenMixin",
+    "CreativeSlotAccessor",
+    "GuiMixin",
+    "InventoryScreenMixin",
+    "PlayerRendererMixin"
+  ]
+}

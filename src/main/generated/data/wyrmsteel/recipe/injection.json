@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": {
+      "item": "wyrmsteel:utility_core"
+    },
+    "I": {
+      "item": "wyrmsteel:wyrmsteel_ingot"
+    },
+    "N": {
+      "item": "wyrmsteel:wyrmsteel_nugget"
+    }
+  },
+  "pattern": [
+    "  N",
+    "NI ",
+    "CN "
+  ],
+  "result": {
+    "count": 1,
+    "id": "wyrmsteel:injection"
+  }
+}

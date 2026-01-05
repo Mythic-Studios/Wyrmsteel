@@ -1,0 +1,38 @@
+{
+	"schemaVersion": 1,
+	"id": "wyrmsteel",
+	"version": "${version}",
+	"name": "Wyrmsteel",
+	"description": "A weapon mod that includes more than just simple weapons",
+	"authors": [
+		"Mythic Goose Studios"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/wyrmsteel/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"org.mythicgoose.wyrmsteel.Wyrmsteel"
+		],
+      "client": [
+        "org.mythicgoose.wyrmsteel.WyrmsteelClient"
+      ],
+		"fabric-datagen": [
+			"org.mythicgoose.wyrmsteel.WyrmsteelDataGenerator"
+		]
+	},
+	"mixins": [
+		"wyrmsteel.mixins.json"
+	],
+    "accessWidener": "wyrmsteel.accesswidener",
+	"depends": {
+		"fabricloader": ">=0.18.4",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}

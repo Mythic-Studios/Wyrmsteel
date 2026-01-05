@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "C": {
+      "item": "minecraft:glass"
+    },
+    "S": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  "pattern": [
+    "CAC",
+    "ASA",
+    "CAC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "wyrmsteel:utility_core"
+  }
+}

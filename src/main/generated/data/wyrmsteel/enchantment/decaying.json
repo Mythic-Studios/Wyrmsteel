@@ -1,0 +1,21 @@
+{
+  "anvil_cost": 2,
+  "description": {
+    "translate": "enchantment.wyrmsteel.decaying"
+  },
+  "max_cost": {
+    "base": 50,
+    "per_level_above_first": 10
+  },
+  "max_level": 1,
+  "min_cost": {
+    "base": 1,
+    "per_level_above_first": 10
+  },
+  "primary_items": "#wyrmsteel:scythe_enchantable",
+  "slots": [
+    "mainhand"
+  ],
+  "supported_items": "#wyrmsteel:scythe_enchantable",
+  "weight": 5
+}

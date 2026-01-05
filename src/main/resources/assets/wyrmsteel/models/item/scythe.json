@@ -1,0 +1,37 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
+	"parent": "minecraft:item/handheld",
+	"textures": {
+		"layer0": "wyrmsteel:item/scythe_decay"
+	},
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [0, -90, 0],
+			"translation": [0, 7.75, 8.5],
+			"scale": [1.6, 1.6, 1]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [0, 90, 0],
+			"translation": [0, 7.75, 8.5],
+			"scale": [1.6, 1.6, 1]
+		},
+		"firstperson_righthand": {
+			"rotation": [-49.71, -51.87, -15.29],
+			"translation": [0, 0, -2.5],
+			"scale": [1.6, 1.6, 1]
+		},
+		"firstperson_lefthand": {
+			"rotation": [98.23, 69.26, -135.39],
+			"translation": [5.5, 2, -2.5],
+			"scale": [1.6, 1.6, 1]
+		},
+		"ground": {
+			"translation": [0, 2, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"head": {
+			"translation": [0, -15.5, 3.5]
+		}
+	}
+}

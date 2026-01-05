@@ -1,0 +1,37 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
+	"parent": "minecraft:item/handheld",
+	"textures": {
+		"layer0": "wyrmsteel:item/blowgun_natural"
+	},
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [-126, 90, 0],
+			"translation": [0, -2.5, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [0, 0, -54.5],
+			"translation": [0, -2, -0.25],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"firstperson_righthand": {
+			"rotation": [66, 75.66, -138.12],
+			"translation": [4.5, -1.5, -5.75]
+		},
+		"firstperson_lefthand": {
+			"rotation": [-141.83, -67.92, -61.23],
+			"translation": [7, -2, -5.75]
+		},
+		"ground": {
+			"translation": [0, 5, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"head": {
+			"rotation": [102.5, -90, 0],
+			"translation": [7.25, -24.75, 0.5],
+			"scale": [0.75, 0.75, 0.75]
+		}
+	}
+}

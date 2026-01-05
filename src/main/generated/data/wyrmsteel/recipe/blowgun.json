@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "B": {
+      "item": "minecraft:bamboo"
+    },
+    "I": {
+      "item": "wyrmsteel:wyrmsteel_ingot"
+    },
+    "W": {
+      "item": "wyrmsteel:weapon_core"
+    }
+  },
+  "pattern": [
+    "  W",
+    "IB ",
+    "II "
+  ],
+  "result": {
+    "count": 1,
+    "id": "wyrmsteel:blowgun"
+  }
+}

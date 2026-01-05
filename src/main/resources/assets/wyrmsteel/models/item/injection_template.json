@@ -1,0 +1,39 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "wyrmsteel:item/injection",
+    "layer1": "wyrmsteel:item/injection_overlay"
+  },
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [-55, 90, 0],
+      "translation": [0, 1.25, 0.5],
+      "scale": [0.5, 0.5, 0.5]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [-55, -90, 0],
+      "translation": [0, 1.25, 0.5],
+      "scale": [0.5, 0.5, 0.5]
+    },
+    "firstperson_righthand": {
+      "rotation": [66, 75.66, -138.12],
+      "translation": [4.5, -1.5, -5.75]
+    },
+    "firstperson_lefthand": {
+      "rotation": [-141.83, -67.92, -61.23],
+      "translation": [7, -2, -5.75]
+    },
+    "ground": {
+      "translation": [0, 5, 0],
+      "scale": [0.5, 0.5, 0.5]
+    },
+    "head": {
+      "rotation": [-87, 90, 0],
+      "translation": [7.25, -24.75, -2.25],
+      "scale": [0.75, 0.75, 0.75]
+    },
+    "on_shelf": {
+      "translation": [0, 0, -3.25]
+    }
+  }
+}
