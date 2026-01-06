@@ -1,4 +1,8 @@
 {
+  "death.attack.blood_loss": "%1$s bled out",
+  "death.attack.blood_loss.player": "%1$s bled out whilst fighting %2$s",
+  "death.attack.cuts": "%1$s was shredded to ribbons",
+  "death.attack.cuts.player": "%1$s was shredded to ribbons whilst fighting %2$s",
   "effect.wyrmsteel.dimensional_desync": "Dimensional Desynchronization",
   "effect.wyrmsteel.torpor": "Torpor",
   "effect.wyrmsteel.vulnerable": "Vulnerability",
@@ -20,6 +24,7 @@
   "enchantment.wyrmsteel.slice_and_dice.desc": "Some hits have an extremely low chance to be fatal",
   "enchantment.wyrmsteel.synchronised": "Synchronization",
   "enchantment.wyrmsteel.synchronised.desc": "When thrown it prevents you from experiencing a Dimension Desynchronization",
+  "entity.wyrmsteel.dart": "Throwing Dart",
   "item.wyrmsteel.blowgun": "Blowgun",
   "item.wyrmsteel.infinite_pearl": "Infinite Enderpearl",
   "item.wyrmsteel.injection": "Injection",
@@ -44,7 +49,7 @@
   "item.wyrmsteel.injection_wind_charged": "Injection",
   "item.wyrmsteel.injection_wither": "Injection",
   "item.wyrmsteel.scythe": "Scythe",
-  "item.wyrmsteel.sickle": "Sickel",
+  "item.wyrmsteel.sickle": "Sickle",
   "item.wyrmsteel.totem_of_healthiness": "Totem of Healthiness",
   "item.wyrmsteel.utility_core": "Utility Core",
   "item.wyrmsteel.weapon_core": "Weapon Core",
@@ -55,5 +60,5 @@
   "key.categories.wyrmsteel": "Wyrmsteel",
   "key.wyrmsteel.equip_back_weapon": "Equip Backslot Item",
   "key.wyrmsteel.swap_slots": "Swap Backslot Item",
-  "tooltip.no_effect": "§8No Effects"
+  "tooltip.no_effect": "§7No Effects"
 }

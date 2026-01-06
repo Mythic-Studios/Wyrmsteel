@@ -22,7 +22,7 @@ public class ModEffects {
             new EmptyStatusEffect(MobEffectCategory.HARMFUL, 0x67574A).addAttributeModifier(
                     Attributes.MAX_HEALTH,
                     ResourceLocation.fromNamespaceAndPath(Wyrmsteel.MOD_ID, "dimensional_desync"),
-                    -0.5, // -50% (multiply operation)
+                    -0.25, // -25% (multiply operation)
                     AttributeModifier.Operation.ADD_MULTIPLIED_BASE
             ));
 

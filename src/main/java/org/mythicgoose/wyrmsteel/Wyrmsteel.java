@@ -29,6 +29,7 @@ public class Wyrmsteel implements ModInitializer {
         ModPackets.registerPackets();
         PlayerDeathHandler.register();
         WeaponStashSwapPayload.register();
+        ModParticles.registerParticles();
 
         ModItems.init();
         ModInjections.init();

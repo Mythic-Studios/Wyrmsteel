@@ -22,6 +22,8 @@ import org.mythicgoose.wyrmsteel.init.ModEffects;
 import org.mythicgoose.wyrmsteel.init.ModEnchantments;
 
 public class CustomEnderpearlItem extends Item {
+    private static int COOLDOWN = 600; // In ticks (lowest time)
+
     public CustomEnderpearlItem(Properties properties) {
         super(properties);
     }
@@ -41,10 +43,6 @@ public class CustomEnderpearlItem extends Item {
         ItemStack itemStack = player.getItemInHand(interactionHand);
         level.playSound((Player)null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENDER_PEARL_THROW, SoundSource.NEUTRAL, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
 
-        if (!player.isCreative()) {
-            handleCooldowns(player, itemStack);
-        }
-
         if (!level.isClientSide) {
             ThrownEnderpearl thrownEnderpearl = new ThrownEnderpearl(level, player);
             thrownEnderpearl.setItem(itemStack);
@@ -55,6 +53,11 @@ public class CustomEnderpearlItem extends Item {
         handleEffect(player, itemStack);
 
         player.awardStat(Stats.ITEM_USED.get(this));
+
+        if (!player.isCreative()) {
+            handleCooldowns(player, itemStack, COOLDOWN);
+        }
+
         return InteractionResultHolder.sidedSuccess(itemStack, level.isClientSide());
     }
 
@@ -63,16 +66,18 @@ public class CustomEnderpearlItem extends Item {
 
         if (!(level > 0)) {
             player.addEffect(new MobEffectInstance(ModEffects.DIMENSIONAL_DESYNC, 5000, 0));
+        } else {
+            COOLDOWN = COOLDOWN * 4;
         }
     }
 
-    private void handleCooldowns(Player player, ItemStack itemStack) {
+    private void handleCooldowns(Player player, ItemStack itemStack, int cooldown) {
         int level = getEnchantmentLevel(itemStack, player, ModEnchantments.COOLNESS_FACTOR);
 
         if (level > 0) {
-            player.getCooldowns().addCooldown(this, 600);
+            player.getCooldowns().addCooldown(this, cooldown);
         } else {
-            player.getCooldowns().addCooldown(this, 1200);
+            player.getCooldowns().addCooldown(this, cooldown * 2);
         }
     }
 

@@ -188,7 +188,7 @@ public class ModInjections {
                     ModEffects.DIMENSIONAL_DESYNC.value(),
                     0x2f27a1,   // ItemEffectColor (overlay)
                     0xFFFFFF,   // NoUse (base)
-                    100000, 0
+                    100000, 2
             )
     );
 

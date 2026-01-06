@@ -42,8 +42,9 @@ public record C2SWeaponStashSlotClickPacket(ItemStack newStack) implements Custo
                 // Update the weapon stash slot on the server
                 ((InventoryAccessor) inventory).weapons_of_death$setWeaponStashSlot(payload.newStack().copy());
 
-                // CRITICAL: Sync back to ALL clients
-                NetworkHelper.syncBackWeaponToClients(player, payload.newStack());
+                // DON'T sync back to the sender - they already have the correct state
+                // The client's slot transaction will complete naturally
+                // Only sync to OTHER players if needed (for multiplayer visibility)
             });
         });
     }

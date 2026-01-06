@@ -3,6 +3,7 @@ package org.mythicgoose.wyrmsteel.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.core.HolderLookup;
+import org.mythicgoose.wyrmsteel.init.ModEntities;
 import org.mythicgoose.wyrmsteel.init.ModInjections;
 import org.mythicgoose.wyrmsteel.init.ModItems;
 
@@ -22,7 +23,7 @@ public class ModLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.WYRMSTEEL_NUGGET, "Wyrmsteel Nugget");
 
         translationBuilder.add(ModItems.SCYTHE, "Scythe");
-        translationBuilder.add(ModItems.SICKLE, "Sickel");
+        translationBuilder.add(ModItems.SICKLE, "Sickle");
         translationBuilder.add(ModItems.BLOWGUN, "Blowgun");
 
         translationBuilder.add(ModItems.EMPTY_INJECTION, "Injection");
@@ -34,7 +35,15 @@ public class ModLanguageProvider extends FabricLanguageProvider {
             translationBuilder.add(injection, "Injection");
         }
 
-        translationBuilder.add("tooltip.no_effect", "§8No Effects");
+        translationBuilder.add(ModEntities.DART, "Throwing Dart");
+
+        translationBuilder.add("death.attack.blood_loss", "%1$s bled out");
+        translationBuilder.add("death.attack.blood_loss.player", "%1$s bled out whilst fighting %2$s");
+
+        translationBuilder.add("death.attack.cuts", "%1$s was shredded to ribbons");
+        translationBuilder.add("death.attack.cuts.player", "%1$s was shredded to ribbons whilst fighting %2$s");
+
+        translationBuilder.add("tooltip.no_effect", "§7No Effects");
 
         translationBuilder.add("effect.wyrmsteel.torpor", "Torpor");
         translationBuilder.add("effect.wyrmsteel.vulnerable", "Vulnerability");

@@ -3,7 +3,6 @@
   "package": "org.mythicgoose.wyrmsteel.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "AbstractContainerMenuMixin",
     "InventoryMenuMixin",
     "InventoryMixin",
     "LivingEntityMixin",

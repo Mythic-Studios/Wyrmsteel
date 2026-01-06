@@ -22,7 +22,9 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
+import org.mythicgoose.wyrmsteel.init.ModDamageTypes;
 import org.mythicgoose.wyrmsteel.init.ModEnchantments;
+import org.mythicgoose.wyrmsteel.init.ModParticles;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +41,7 @@ public class ScytheItem extends SwordItem {
 
         if (shareLoveLevel > 0) {
             if (!level.isClientSide) {
-                handleShareTheLove(player, shareLoveLevel);
+                handleShareTheLove(player, level);
             }
 
             return InteractionResultHolder.success(itemStack);
@@ -61,9 +63,9 @@ public class ScytheItem extends SwordItem {
      * Deals 1.5 hearts damage to target and player loses 1.5 hearts
      * Sets player's effect durations to 20 ticks when hitting a target
      */
-    private void handleShareTheLove(Player player, int level) {
+    private void handleShareTheLove(Player player, Level world) {
         // Player loses 1.5 hearts (3.0 damage)
-        player.hurt(player.damageSources().magic(), 3.0f);
+        player.hurt(ModDamageTypes.bloodLoss(world, player), 3.0f);
 
         // Raycast parameters
         double range = 32.0; // Maximum range for the ray
@@ -120,7 +122,7 @@ public class ScytheItem extends SwordItem {
         // If we hit a living entity, deal damage and copy effects
         if (closestTarget != null) {
             // Deal 1.5 hearts (3.0 damage) to the target
-            closestTarget.hurt(player.damageSources().magic(), 3.0f);
+            closestTarget.hurt(ModDamageTypes.cuts(world, closestTarget, player), 3.0f);
 
             // Store effects to copy before modifying player's effects
             List<MobEffectInstance> effectsToCopy = new ArrayList<>();
@@ -160,11 +162,11 @@ public class ScytheItem extends SwordItem {
             // Spawn extra particles at the target
             if (player.level() instanceof ServerLevel serverLevel) {
                 serverLevel.sendParticles(
-                        ParticleTypes.HEART,
+                        ModParticles.BLOOD_BUBBLE,
                         closestTarget.getX(),
                         closestTarget.getY() + closestTarget.getBbHeight() / 2,
                         closestTarget.getZ(),
-                        10, // more particles at target
+                        3, // more particles at target
                         0.5, 0.5, 0.5, // spread
                         0.1 // speed
                 );
@@ -184,20 +186,19 @@ public class ScytheItem extends SwordItem {
         Vec3 normalized = direction.normalize();
 
         // Number of particles based on distance (one particle every 0.2 blocks for denser trail)
-        int particleCount = Math.max(5, (int) (distance / 0.2));
+        int particleCount = Math.max(2, (int) (distance / 0.2));
 
         for (int i = 0; i < particleCount; i++) {
             double progress = (double) i / particleCount;
             Vec3 particlePos = start.add(normalized.scale(distance * progress));
 
-            // Spawn heart particles for the "love" theme
             level.sendParticles(
-                    ParticleTypes.HEART,
+                    ModParticles.BLOOD_BUBBLE,
                     particlePos.x,
                     particlePos.y,
                     particlePos.z,
                     1, // particle count
-                    0.05, 0.05, 0.05, // small offset for variety
+                    0.25f, 0.25f, 0.25f, // small offset for variety
                     0.0 // speed
             );
         }

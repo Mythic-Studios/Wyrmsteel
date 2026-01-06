@@ -2,6 +2,7 @@ package org.mythicgoose.wyrmsteel;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
@@ -14,16 +15,20 @@ import org.mythicgoose.wyrmsteel.custom_slot.InventoryAccessor;
 import org.mythicgoose.wyrmsteel.entity.DartRenderer;
 import org.mythicgoose.wyrmsteel.init.ModEntities;
 import org.mythicgoose.wyrmsteel.init.ModInjections;
+import org.mythicgoose.wyrmsteel.init.ModParticles;
 import org.mythicgoose.wyrmsteel.item.InjectionItem;
 import org.mythicgoose.wyrmsteel.keybinding.ClientTickHandler;
 import org.mythicgoose.wyrmsteel.keybinding.KeybindRegistry;
 import org.mythicgoose.wyrmsteel.network.S2CBackWeaponSyncPacket;
 import org.mythicgoose.wyrmsteel.network.TotemAnimationPayload;
+import org.mythicgoose.wyrmsteel.particle.BloodParticle;
 
 public class WyrmsteelClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         HudRenderCallback.EVENT.register(new HotbarWeaponStashRenderer());
+
+        ParticleFactoryRegistry.getInstance().register(ModParticles.BLOOD_BUBBLE, BloodParticle.Factory::new);
 
         KeybindRegistry.register();
         WeaponStashKeybindHandler.register();
