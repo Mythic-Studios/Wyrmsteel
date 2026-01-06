@@ -11,6 +11,7 @@ import org.mythicgoose.wyrmsteel.custom_slot.InventoryAccessor;
 import org.mythicgoose.wyrmsteel.custom_slot.PlayerDeathHandler;
 import org.mythicgoose.wyrmsteel.init.*;
 import org.mythicgoose.wyrmsteel.item.InjectionItem;
+import org.mythicgoose.wyrmsteel.network.ModMessages;
 import org.mythicgoose.wyrmsteel.network.ModPackets;
 import org.mythicgoose.wyrmsteel.network.NetworkHelper;
 import org.mythicgoose.wyrmsteel.network.WeaponStashSwapPayload;
@@ -34,6 +35,9 @@ public class Wyrmsteel implements ModInitializer {
         ModItemGroups.init();
         ModEntities.register();
         ModEffects.registerEffects();
+
+        ModMessages.registerC2SPackets();
+        ModMessages.registerS2CPackets();
 
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
             ServerPlayer player = handler.getPlayer();

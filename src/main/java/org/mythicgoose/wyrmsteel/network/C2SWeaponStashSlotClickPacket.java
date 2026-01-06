@@ -31,17 +31,19 @@ public record C2SWeaponStashSlotClickPacket(ItemStack newStack) implements Custo
     }
 
     public static void register() {
-        PayloadTypeRegistry.playC2S().register(TYPE, CODEC);
+        // DON'T register the type here - it's already registered in ModPackets!
+        // Only register the RECEIVER here
 
         ServerPlayNetworking.registerGlobalReceiver(TYPE, (payload, context) -> {
             context.player().server.execute(() -> {
                 ServerPlayer player = context.player();
                 Inventory inventory = player.getInventory();
 
-                System.out.println("SERVER: Received slot click packet - setting to: " + payload.newStack());
-
                 // Update the weapon stash slot on the server
-                ((InventoryAccessor) inventory).weapons_of_death$setWeaponStashSlot(payload.newStack());
+                ((InventoryAccessor) inventory).weapons_of_death$setWeaponStashSlot(payload.newStack().copy());
+
+                // CRITICAL: Sync back to ALL clients
+                NetworkHelper.syncBackWeaponToClients(player, payload.newStack());
             });
         });
     }

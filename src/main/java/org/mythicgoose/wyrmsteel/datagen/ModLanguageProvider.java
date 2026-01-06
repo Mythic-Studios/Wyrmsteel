@@ -26,6 +26,8 @@ public class ModLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.BLOWGUN, "Blowgun");
 
         translationBuilder.add(ModItems.EMPTY_INJECTION, "Injection");
+        translationBuilder.add(ModItems.TOTEM_OF_HEALTHINESS, "Totem of Healthiness");
+        translationBuilder.add(ModItems.INFINITE_PEARL, "Infinite Enderpearl");
 
         // Add all injections automatically
         for (var injection : ModInjections.ALL_INJECTIONS) {
@@ -35,6 +37,8 @@ public class ModLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("tooltip.no_effect", "§8No Effects");
 
         translationBuilder.add("effect.wyrmsteel.torpor", "Torpor");
+        translationBuilder.add("effect.wyrmsteel.vulnerable", "Vulnerability");
+        translationBuilder.add("effect.wyrmsteel.dimensional_desync", "Dimensional Desynchronization");
 
         translationBuilder.add("itemgroup.wyrmsteel.core", "Wyrmsteel");
         translationBuilder.add("itemgroup.wyrmsteel.injections", "Wyrmsteel: Injections");
@@ -53,10 +57,17 @@ public class ModLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("enchantment.wyrmsteel.puncture.desc", "Darts are now replaced with darts that prevent health regen");
         translationBuilder.add("enchantment.wyrmsteel.junglebound", "Junglebound");
         translationBuilder.add("enchantment.wyrmsteel.junglebound.desc", "Darts are now replaced with darts give entities perma poison till death or they drink milk");
+        translationBuilder.add("enchantment.wyrmsteel.breaching", "Breaching");
+        translationBuilder.add("enchantment.wyrmsteel.breaching.desc", "Darts are now replaced with darts give entities Vulnerability till death or they drink milk");
 
+        translationBuilder.add("enchantment.wyrmsteel.coolness_factor", "Coolness Factor");
+        translationBuilder.add("enchantment.wyrmsteel.coolness_factor.desc", "When thrown it reduces the time needed to wait to throw the pearl again");
+        translationBuilder.add("enchantment.wyrmsteel.synchronised", "Synchronization");
+        translationBuilder.add("enchantment.wyrmsteel.synchronised.desc", "When thrown it prevents you from experiencing a Dimension Desynchronization");
 
-        translationBuilder.add("key.categories.wyrmsteel", "Weapons of Death");
+        translationBuilder.add("key.categories.wyrmsteel", "Wyrmsteel");
         translationBuilder.add("key.wyrmsteel.swap_slots", "Swap Backslot Item");
+        translationBuilder.add("key.wyrmsteel.equip_back_weapon", "Equip Backslot Item");
 
     }
 }

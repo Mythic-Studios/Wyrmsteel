@@ -13,8 +13,8 @@ import java.util.Objects;
 import java.util.function.Supplier;
 
 public enum ModTiers implements Tier {
-    BLADES(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 180000, -3.4F, 6.0F, 1, () -> Ingredient.of(new ItemLike[]{Items.NETHERITE_INGOT})),
-    FAST_WEAPON(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 180000, 25.0F, 1.0F, 1, () -> Ingredient.of(new ItemLike[]{Items.NETHERITE_INGOT}));
+    BLADES(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 2780, -3.4F, 6.0F, 1, () -> Ingredient.of(new ItemLike[]{Items.NETHERITE_INGOT})),
+    FAST_WEAPON(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 2780, 25.0F, 1.0F, 1, () -> Ingredient.of(new ItemLike[]{Items.NETHERITE_INGOT}));
 
     private final TagKey<Block> incorrectBlocksForDrops;
     private final int uses;

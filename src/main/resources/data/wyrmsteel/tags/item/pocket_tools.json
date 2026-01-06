@@ -1,0 +1,29 @@
+{
+  "replace": false,
+  "values": [
+    "wyrmsteel:sickle",
+    "wyrmsteel:blowgun",
+    "wyrmsteel:injection",
+    "wyrmsteel:injection_milk",
+    "wyrmsteel:injection_poison",
+    "wyrmsteel:injection_wither",
+    "wyrmsteel:injection_strength",
+    "wyrmsteel:injection_regen",
+    "wyrmsteel:injection_leaping",
+    "wyrmsteel:injection_vison",
+    "wyrmsteel:injection_invis",
+    "wyrmsteel:injection_speed",
+    "wyrmsteel:injection_fire_resist",
+    "wyrmsteel:injection_slow_fall",
+    "wyrmsteel:injection_water_breathing",
+    "wyrmsteel:injection_slowness",
+    "wyrmsteel:injection_weaving",
+    "wyrmsteel:injection_oozing",
+    "wyrmsteel:injection_wind_charged",
+    "wyrmsteel:injection_infesting",
+    "wyrmsteel:injection_torpor",
+    "wyrmsteel:injection_vulnerable",
+    "wyrmsteel:totem_of_healthiness",
+    "minecraft:totem_of_undying"
+  ]
+}

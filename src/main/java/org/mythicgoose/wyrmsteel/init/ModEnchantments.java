@@ -33,6 +33,13 @@ public class ModEnchantments {
             ResourceKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(Wyrmsteel.MOD_ID, "puncture"));
     public static final ResourceKey<Enchantment> JUNGLEBOUND =
             ResourceKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(Wyrmsteel.MOD_ID, "junglebound"));
+    public static final ResourceKey<Enchantment> BREACHING =
+            ResourceKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(Wyrmsteel.MOD_ID, "breaching"));
+
+    public static final ResourceKey<Enchantment> COOLNESS_FACTOR =
+            ResourceKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(Wyrmsteel.MOD_ID, "coolness_factor"));
+    public static final ResourceKey<Enchantment> SYNCHRONISED =
+            ResourceKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(Wyrmsteel.MOD_ID, "synchronised"));
 
     // Create the tag reference
     public static final TagKey<Item> SCYTHE_ENCHANTABLE =
@@ -41,6 +48,8 @@ public class ModEnchantments {
             TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(Wyrmsteel.MOD_ID, "sickle_enchantable"));
     public static final TagKey<Item> DART_ENCHANTABLE =
             TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(Wyrmsteel.MOD_ID, "dart_enchantable"));
+    public static final TagKey<Item> PEARL_ENCHANTABLE =
+            TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(Wyrmsteel.MOD_ID, "pearl_enchantable"));
 
 
     public static void bootstrap(BootstrapContext<Enchantment> registerable) {
@@ -53,7 +62,7 @@ public class ModEnchantments {
                         5,  // Weight
                         1,  // Max level
                         Enchantment.dynamicCost(1, 10),
-                        Enchantment.dynamicCost(50, 10),
+                        Enchantment.dynamicCost(1, 10),
                         2,  // Anvil cost
                         EquipmentSlotGroup.MAINHAND
                 ))
@@ -65,7 +74,7 @@ public class ModEnchantments {
                         5,  // Weight
                         1,  // Max level
                         Enchantment.dynamicCost(1, 10),
-                        Enchantment.dynamicCost(50, 10),
+                        Enchantment.dynamicCost(1, 10),
                         2,  // Anvil cost
                         EquipmentSlotGroup.MAINHAND
                 ))
@@ -78,7 +87,7 @@ public class ModEnchantments {
                         5,  // Weight
                         1,  // Max level
                         Enchantment.dynamicCost(1, 10),
-                        Enchantment.dynamicCost(50, 10),
+                        Enchantment.dynamicCost(1, 10),
                         2,  // Anvil cost
                         EquipmentSlotGroup.MAINHAND
                 ))
@@ -90,7 +99,7 @@ public class ModEnchantments {
                         5,  // Weight
                         1,  // Max level
                         Enchantment.dynamicCost(1, 10),
-                        Enchantment.dynamicCost(50, 10),
+                        Enchantment.dynamicCost(1, 10),
                         2,  // Anvil cost
                         EquipmentSlotGroup.MAINHAND
                 ))
@@ -104,7 +113,7 @@ public class ModEnchantments {
                         5,  // Weight
                         1,  // Max level
                         Enchantment.dynamicCost(1, 10),
-                        Enchantment.dynamicCost(50, 10),
+                        Enchantment.dynamicCost(1, 10),
                         2,  // Anvil cost
                         EquipmentSlotGroup.MAINHAND
                 ))
@@ -116,7 +125,43 @@ public class ModEnchantments {
                         5,  // Weight
                         1,  // Max level
                         Enchantment.dynamicCost(1, 10),
-                        Enchantment.dynamicCost(50, 10),
+                        Enchantment.dynamicCost(1, 10),
+                        2,  // Anvil cost
+                        EquipmentSlotGroup.MAINHAND
+                ))
+        );
+        register(registerable, BREACHING, Enchantment.enchantment(
+                Enchantment.definition(
+                        items.getOrThrow(DART_ENCHANTABLE), // Your custom tag
+                        items.getOrThrow(DART_ENCHANTABLE), // Same tag for primary
+                        5,  // Weight
+                        1,  // Max level
+                        Enchantment.dynamicCost(1, 10),
+                        Enchantment.dynamicCost(1, 10),
+                        2,  // Anvil cost
+                        EquipmentSlotGroup.MAINHAND
+                ))
+        );
+        register(registerable, COOLNESS_FACTOR, Enchantment.enchantment(
+                Enchantment.definition(
+                        items.getOrThrow(PEARL_ENCHANTABLE), // Your custom tag
+                        items.getOrThrow(PEARL_ENCHANTABLE), // Same tag for primary
+                        5,  // Weight
+                        1,  // Max level
+                        Enchantment.dynamicCost(1, 10),
+                        Enchantment.dynamicCost(1, 10),
+                        2,  // Anvil cost
+                        EquipmentSlotGroup.MAINHAND
+                ))
+        );
+        register(registerable, SYNCHRONISED, Enchantment.enchantment(
+                Enchantment.definition(
+                        items.getOrThrow(PEARL_ENCHANTABLE), // Your custom tag
+                        items.getOrThrow(PEARL_ENCHANTABLE), // Same tag for primary
+                        5,  // Weight
+                        1,  // Max level
+                        Enchantment.dynamicCost(1, 10),
+                        Enchantment.dynamicCost(1, 10),
                         2,  // Anvil cost
                         EquipmentSlotGroup.MAINHAND
                 ))

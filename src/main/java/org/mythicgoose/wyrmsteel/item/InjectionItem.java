@@ -64,7 +64,9 @@ public class InjectionItem extends Item {
             }
 
             // Set cooldown (600 ticks = 30 seconds = 0.5 minutes)
-            player.getCooldowns().addCooldown(this, 600);
+            if (!player.isCreative()) {
+                player.getCooldowns().addCooldown(this, 600);
+            }
 
             return InteractionResultHolder.success(stack);
         }
@@ -75,6 +77,7 @@ public class InjectionItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
         if (clearEffects) {
+            tooltip.add(Component.literal("§6Milk"));
             tooltip.add(Component.literal("§7Clears all effects"));
         }
         if (InjectionEffect != null) {

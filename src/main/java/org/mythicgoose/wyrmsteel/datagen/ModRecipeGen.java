@@ -23,6 +23,8 @@ public class ModRecipeGen extends FabricRecipeProvider {
     @Override
     public void buildRecipes(RecipeOutput output) {
 
+        // Other
+
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.WEAPON_CORE)
                 .pattern("DAD")
                 .pattern("ASA")
@@ -47,8 +49,8 @@ public class ModRecipeGen extends FabricRecipeProvider {
                 .pattern("CAC")
                 .pattern("ASA")
                 .pattern("CAC")
-                .define('A', Blocks.AMETHYST_BLOCK.asItem())
-                .define('C', Blocks.COPPER_BLOCK.asItem())
+                .define('A', Items.AMETHYST_SHARD)
+                .define('C', Items.COPPER_INGOT)
                 .define('S', Items.NETHERITE_INGOT)
                 .unlockedBy("needs_netherite", has(Items.NETHERITE_INGOT))
                 .save(output);
@@ -66,6 +68,30 @@ public class ModRecipeGen extends FabricRecipeProvider {
                 .requires(ModItems.WYRMSTEEL_INGOT)
                 .unlockedBy("wyrmsteel_ingot", has(ModItems.WYRMSTEEL_INGOT))
                 .save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.TOTEM_OF_HEALTHINESS)
+                .pattern("III")
+                .pattern("ITI")
+                .pattern("ICI")
+                .define('I', ModItems.WYRMSTEEL_INGOT)
+                .define('T', Items.TOTEM_OF_UNDYING)
+                .define('C', ModItems.UTILITY_CORE)
+                .unlockedBy("needs_utility_core", has(ModItems.UTILITY_CORE))
+                .unlockedBy("needs_wrymsteel", has(ModItems.WYRMSTEEL_INGOT))
+                .save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.INFINITE_PEARL)
+                .pattern(" I ")
+                .pattern("ITI")
+                .pattern(" C ")
+                .define('I', ModItems.WYRMSTEEL_INGOT)
+                .define('T', Items.ENDER_PEARL)
+                .define('C', ModItems.UTILITY_CORE)
+                .unlockedBy("needs_utility_core", has(ModItems.UTILITY_CORE))
+                .unlockedBy("needs_wrymsteel", has(ModItems.WYRMSTEEL_INGOT))
+                .save(output);
+
+        // Weapons
 
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.SCYTHE)
                 .pattern("IIW")
@@ -142,6 +168,20 @@ public class ModRecipeGen extends FabricRecipeProvider {
                 .requires(ModItems.EMPTY_INJECTION)
                 .requires(Items.GLISTERING_MELON_SLICE)
                 .requires(Items.WITHER_ROSE)
+                .unlockedBy("empty_injection", has(ModItems.EMPTY_INJECTION))
+                .save(output);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModInjections.INJECTION_VULNERABLE)
+                .requires(ModItems.EMPTY_INJECTION)
+                .requires(Items.SHIELD)
+                .requires(Items.WITHER_ROSE)
+                .unlockedBy("empty_injection", has(ModItems.EMPTY_INJECTION))
+                .save(output);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModInjections.INJECTION_DIMENSIONAL_DSYNC)
+                .requires(ModItems.EMPTY_INJECTION)
+                .requires(Items.ENDER_PEARL)
+                .requires(Items.CHORUS_FRUIT)
                 .unlockedBy("empty_injection", has(ModItems.EMPTY_INJECTION))
                 .save(output);
 

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": {
+      "item": "wyrmsteel:utility_core"
+    },
+    "I": {
+      "item": "wyrmsteel:wyrmsteel_ingot"
+    },
+    "T": {
+      "item": "minecraft:ender_pearl"
+    }
+  },
+  "pattern": [
+    " I ",
+    "ITI",
+    " C "
+  ],
+  "result": {
+    "count": 1,
+    "id": "wyrmsteel:infinite_pearl"
+  }
+}

@@ -4,10 +4,11 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 
-public class NoRegenEffect extends MobEffect {
+public class EmptyStatusEffect extends MobEffect {
 
-    public NoRegenEffect() {
-        super(MobEffectCategory.HARMFUL, 0xD8C0B8); // Purple color
+
+    public EmptyStatusEffect(MobEffectCategory mobEffectCategory, int i) {
+        super(mobEffectCategory, i);
     }
 
     @Override

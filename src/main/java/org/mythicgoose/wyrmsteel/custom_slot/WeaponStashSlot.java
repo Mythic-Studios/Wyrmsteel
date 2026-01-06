@@ -1,8 +1,8 @@
 package org.mythicgoose.wyrmsteel.custom_slot;
 
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.minecraft.client.Minecraft;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.Slot;
@@ -13,6 +13,7 @@ import org.mythicgoose.wyrmsteel.network.NetworkHelper;
 public class WeaponStashSlot extends Slot {
 
     private final Inventory inventory;
+    private boolean isSyncing = false;
 
     public WeaponStashSlot(Inventory inventory, int slot, int x, int y) {
         super(inventory, slot, x, y);
@@ -27,40 +28,74 @@ public class WeaponStashSlot extends Slot {
 
     @Override
     public void set(ItemStack stack) {
+        System.out.println("SET CALLED: " + stack);
+        ItemStack oldStack = getItem().copy();
         ((InventoryAccessor) inventory)
                 .weapons_of_death$setWeaponStashSlot(stack);
-        notifySlotChange(stack);
+
+        // Only notify if the stack actually changed
+        if (!ItemStack.matches(oldStack, stack)) {
+            notifySlotChange(stack);
+        }
     }
 
     @Override
     public ItemStack remove(int amount) {
-        ItemStack current = getItem().copy();
+        System.out.println("REMOVE CALLED: amount=" + amount);
+        ItemStack current = getItem();
         if (current.isEmpty()) {
             return ItemStack.EMPTY;
         }
 
-        ItemStack taken = current.split(amount);
-        set(current);
-        notifySlotChange(current);
+        ItemStack result;
+        if (current.getCount() <= amount) {
+            result = current.copy();
+            // This will trigger notifySlotChange with EMPTY
+            set(ItemStack.EMPTY);
+        } else {
+            result = current.split(amount);
+            // This will trigger notifySlotChange with the reduced stack
+            set(current);
+        }
 
-        return taken;
+        // Make sure the change is marked
+        setChanged();
+
+        return result;
     }
 
     @Override
     public void onTake(Player player, ItemStack stack) {
-        super.onTake(player, stack);
-        notifySlotChange(getItem());
+        System.out.println("ON TAKE CALLED: " + stack);
+        // Don't call super.onTake() because it tries to access inventory array at slot index
+        // which doesn't exist for our custom slot
+
+        // Explicitly ensure slot is empty and synced
+        ItemStack current = getItem();
+        if (!current.isEmpty()) {
+            set(ItemStack.EMPTY);
+        }
+
+        setChanged();
     }
 
     @Override
     public void setByPlayer(ItemStack newStack, ItemStack oldStack) {
-        super.setByPlayer(newStack, oldStack);
-        notifySlotChange(newStack);
+        System.out.println("SET BY PLAYER CALLED: new=" + newStack + ", old=" + oldStack);
+        // Don't call super - just set directly
+        set(newStack);
+        setChanged();
     }
 
-    // Notify both client and server about slot changes
+    @Override
+    public void setChanged() {
+        // Mark inventory as changed
+        inventory.setChanged();
+    }
+
     private void notifySlotChange(ItemStack newStack) {
         Player player = inventory.player;
+        if (player == null) return;
 
         // Server side - sync to clients
         if (player instanceof ServerPlayer serverPlayer) {
@@ -85,5 +120,10 @@ public class WeaponStashSlot extends Slot {
     @Override
     public boolean mayPickup(Player player) {
         return true;
+    }
+
+    @Override
+    public int getMaxStackSize() {
+        return 1; // Only allow 1 item in this slot
     }
 }

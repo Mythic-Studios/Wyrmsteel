@@ -15,6 +15,7 @@ import net.minecraft.world.entity.player.PlayerModelPart;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import org.mythicgoose.wyrmsteel.client.WeaponStashState;
 import org.mythicgoose.wyrmsteel.init.ModItems;
 import org.mythicgoose.wyrmsteel.util.Tags;
 
@@ -29,6 +30,11 @@ public class BackWeaponRenderLayer extends RenderLayer<AbstractClientPlayer, Pla
         // Get the back weapon stack from custom inventory slot
         ItemStack stack = ((InventoryAccessor) player.getInventory()).weapons_of_death$getWeaponStashSlot();
         if (stack.isEmpty()) return;
+
+        // Don't render on back if equipped in hand (only for local player)
+        if (player == Minecraft.getInstance().player && WeaponStashState.isEquipped()) {
+            return;
+        }
 
         matrices.pushPose();
 
@@ -67,8 +73,10 @@ public class BackWeaponRenderLayer extends RenderLayer<AbstractClientPlayer, Pla
         }
 
         // Apply cape physics with reduced effect for pocket weapons
-        boolean isPocketWeapon = stack.is(Tags.POCKET_WEAPONS);
-        float physicsMultiplier = isPocketWeapon ? 0.4f : 1.0f;
+        boolean isPocketWeapon = stack.is(Tags.POCKET_TOOLS);
+        float physicsMultiplier;
+
+        physicsMultiplier = isPocketWeapon ? 0.4f : 1.0f;
 
         matrices.mulPose(Axis.XP.rotationDegrees(6f + (r / 2.0F + q) * physicsMultiplier));
         matrices.mulPose(Axis.ZP.rotationDegrees(s / 2.0F * physicsMultiplier));

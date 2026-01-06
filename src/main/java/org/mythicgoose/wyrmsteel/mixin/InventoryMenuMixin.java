@@ -2,9 +2,7 @@ package org.mythicgoose.wyrmsteel.mixin;
 
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.InventoryMenu;
-import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.inventory.*;
 import org.mythicgoose.wyrmsteel.custom_slot.WeaponStashSlot;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -24,7 +22,7 @@ public abstract class InventoryMenuMixin extends AbstractContainerMenu {
             // Survival mode position
             this.addSlot(new WeaponStashSlot(inventory, 46, 77, 44));
         } else {
-            // Creative mode position - at your background position
+            // Creative mode position
             this.addSlot(new WeaponStashSlot(inventory, 46, 127, 20));
         }
     }

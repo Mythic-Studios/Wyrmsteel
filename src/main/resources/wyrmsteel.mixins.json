@@ -5,6 +5,7 @@
   "mixins": [
     "AbstractContainerMenuMixin",
     "InventoryMenuMixin",
+    "InventoryMixin",
     "LivingEntityMixin",
     "PlayerInventoryExtension",
     "PlayerWeaponStashMixin",

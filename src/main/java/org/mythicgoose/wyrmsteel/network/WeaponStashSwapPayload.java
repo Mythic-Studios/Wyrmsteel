@@ -30,7 +30,6 @@ public record WeaponStashSwapPayload() implements CustomPacketPayload {
     }
 
     public static void register() {
-        // THEN: Register the receiver
         ServerPlayNetworking.registerGlobalReceiver(TYPE, (payload, context) -> {
             context.player().server.execute(() -> {
                 ServerPlayer player = context.player();
@@ -43,27 +42,22 @@ public record WeaponStashSwapPayload() implements CustomPacketPayload {
                 // Get current main hand stack
                 ItemStack mainHandItem = player.getItemInHand(InteractionHand.MAIN_HAND).copy();
 
-                // Swap the items on the SERVER
-                ((InventoryAccessor) inventory)
-                        .weapons_of_death$setWeaponStashSlot(mainHandItem);
-                player.setItemInHand(InteractionHand.MAIN_HAND, stashItem);
-
-                // **ADD THIS LINE: Sync the weapon stash slot to client**
-                NetworkHelper.syncBackWeaponToClients(player, mainHandItem);
-
                 System.out.println("SERVER BEFORE SWAP:");
                 System.out.println("  Stash slot has: " + stashItem);
                 System.out.println("  Main hand has: " + mainHandItem);
 
-                ((InventoryAccessor) inventory)
-                        .weapons_of_death$setWeaponStashSlot(mainHandItem);
+                // Swap the items ONCE
+                ((InventoryAccessor) inventory).weapons_of_death$setWeaponStashSlot(mainHandItem);
                 player.setItemInHand(InteractionHand.MAIN_HAND, stashItem);
 
                 System.out.println("SERVER AFTER SWAP:");
                 System.out.println("  Stash slot now has: " + ((InventoryAccessor) inventory).weapons_of_death$getWeaponStashSlot());
                 System.out.println("  Main hand now has: " + player.getItemInHand(InteractionHand.MAIN_HAND));
 
-                        // Play sound feedback
+                // Sync to clients
+                NetworkHelper.syncBackWeaponToClients(player, mainHandItem);
+
+                // Play sound
                 player.level().playSound(
                         null,
                         player.blockPosition(),

@@ -15,7 +15,8 @@ public class DartProjectile extends AbstractArrow {
     public enum DartType {
         NORMAL,   // Just damage
         POISON,   // Damage + Poison
-        TORPOR    // Damage + Wither
+        TORPOR,    // Damage + Wither
+        VULNERABLE    // Damage + Wither
     }
 
     private DartType dartType = DartType.NORMAL;
@@ -56,6 +57,10 @@ public class DartProjectile extends AbstractArrow {
                 case TORPOR -> {
                     // Apply Torpor for over an hour or day
                     target.addEffect(new MobEffectInstance(ModEffects.TORPOR, 100000, 0));
+                }
+                case VULNERABLE -> {
+                    // Apply Torpor for over an hour or day
+                    target.addEffect(new MobEffectInstance(ModEffects.VULNERABILITY, 100000, 2));
                 }
                 case NORMAL -> {
                     // No additional effects, just damage

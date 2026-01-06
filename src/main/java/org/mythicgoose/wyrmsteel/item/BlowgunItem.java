@@ -87,6 +87,7 @@ public class BlowgunItem extends Item {
             String dartName = switch (dartType) {
                 case POISON -> "Poison Dart";
                 case TORPOR -> "Torpor Dart";
+                case VULNERABLE -> "Breaching Dart";
                 case NORMAL -> "Normal Dart";
             };
         }
@@ -114,6 +115,13 @@ public class BlowgunItem extends Item {
         for (var entry : enchantments.entrySet()) {
             if (entry.getKey().is(ModEnchantments.JUNGLEBOUND)) {
                 return DartProjectile.DartType.POISON;
+            }
+        }
+
+        // Check for Breaching
+        for (var entry : enchantments.entrySet()) {
+            if (entry.getKey().is(ModEnchantments.BREACHING)) {
+                return DartProjectile.DartType.VULNERABLE;
             }
         }
 

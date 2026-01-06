@@ -1,9 +1,12 @@
 package org.mythicgoose.wyrmsteel.mixin;
 
+import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import org.mythicgoose.wyrmsteel.client.WeaponStashState;
 import org.mythicgoose.wyrmsteel.init.ModEffects;
 import org.mythicgoose.wyrmsteel.util.CustomHeartType;
 import org.spongepowered.asm.mixin.Mixin;

@@ -34,7 +34,8 @@ public class ModItemGroups {
 
                             output.accept(ModItems.UTILITY_CORE);
                             output.accept(ModItems.EMPTY_INJECTION);
-
+                            output.accept(ModItems.TOTEM_OF_HEALTHINESS);
+                            output.accept(ModItems.INFINITE_PEARL);
 
 
                         }).build());

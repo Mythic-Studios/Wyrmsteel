@@ -4,7 +4,7 @@
     "translate": "enchantment.wyrmsteel.slice_and_dice"
   },
   "max_cost": {
-    "base": 50,
+    "base": 1,
     "per_level_above_first": 10
   },
   "max_level": 1,

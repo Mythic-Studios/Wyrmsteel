@@ -11,7 +11,7 @@ public class ModPackets {
                 S2CBackWeaponSyncPacket.CODEC
         );
 
-        // Register C2S packets
+        // Register C2S packet types
         PayloadTypeRegistry.playC2S().register(
                 WeaponStashSwapPayload.TYPE,
                 WeaponStashSwapPayload.CODEC
@@ -21,5 +21,9 @@ public class ModPackets {
                 C2SWeaponStashSlotClickPacket.TYPE,
                 C2SWeaponStashSlotClickPacket.CODEC
         );
+
+        // Register packet RECEIVERS (this is what you were missing!)
+        WeaponStashSwapPayload.register();
+        C2SWeaponStashSlotClickPacket.register();
     }
 }

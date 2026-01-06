@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "wyrmsteel:injection"
+    },
+    {
+      "item": "minecraft:shield"
+    },
+    {
+      "item": "minecraft:wither_rose"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "wyrmsteel:injection_vulnerable"
+  }
+}

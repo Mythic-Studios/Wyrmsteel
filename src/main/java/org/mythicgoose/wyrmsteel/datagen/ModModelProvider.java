@@ -36,6 +36,8 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.WYRMSTEEL_NUGGET, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerators.generateFlatItem(ModItems.EMPTY_INJECTION, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.TOTEM_OF_HEALTHINESS, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.INFINITE_PEARL, ModelTemplates.FLAT_ITEM);
 
         // Loop through the list directly
         for (Item item : ModInjections.ALL_INJECTIONS) {

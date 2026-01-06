@@ -4,9 +4,12 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
+import org.mythicgoose.wyrmsteel.client.WeaponStashKeybindHandler;
+import org.mythicgoose.wyrmsteel.client.render.HotbarWeaponStashRenderer;
 import org.mythicgoose.wyrmsteel.custom_slot.InventoryAccessor;
 import org.mythicgoose.wyrmsteel.entity.DartRenderer;
 import org.mythicgoose.wyrmsteel.init.ModEntities;
@@ -15,11 +18,15 @@ import org.mythicgoose.wyrmsteel.item.InjectionItem;
 import org.mythicgoose.wyrmsteel.keybinding.ClientTickHandler;
 import org.mythicgoose.wyrmsteel.keybinding.KeybindRegistry;
 import org.mythicgoose.wyrmsteel.network.S2CBackWeaponSyncPacket;
+import org.mythicgoose.wyrmsteel.network.TotemAnimationPayload;
 
 public class WyrmsteelClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
+        HudRenderCallback.EVENT.register(new HotbarWeaponStashRenderer());
+
         KeybindRegistry.register();
+        WeaponStashKeybindHandler.register();
         ClientTickHandler.register();
         ClientPlayNetworking.registerGlobalReceiver(
                 S2CBackWeaponSyncPacket.TYPE,
@@ -39,6 +46,12 @@ public class WyrmsteelClient implements ClientModInitializer {
                     });
                 }
         );
+
+        ClientPlayNetworking.registerGlobalReceiver(
+                TotemAnimationPayload.ID,
+                TotemAnimationPayload::handle
+        );
+
         EntityRendererRegistry.register(ModEntities.DART, DartRenderer::new);
 
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
@@ -53,6 +66,7 @@ public class WyrmsteelClient implements ClientModInitializer {
                 ModInjections.INJECTION_POISON,
                 ModInjections.INJECTION_WITHER,
                 ModInjections.INJECTION_TORPOR,
+                ModInjections.INJECTION_VULNERABLE,
                 ModInjections.INJECTION_STRENGTH,
                 ModInjections.INJECTION_LEAPING,
                 ModInjections.INJECTION_VISION,
@@ -63,11 +77,11 @@ public class WyrmsteelClient implements ClientModInitializer {
                 ModInjections.INJECTION_SLOWNESS,
                 ModInjections.INJECTION_SLOW_FALL,
                 ModInjections.INJECTION_WATER_BREATHING,
-
                 ModInjections.INJECTION_WEAVING,
                 ModInjections.INJECTION_OOZING,
                 ModInjections.INJECTION_WIND_CHARGED,
-                ModInjections.INJECTION_INFESTING
+                ModInjections.INJECTION_INFESTING,
+                ModInjections.INJECTION_DIMENSIONAL_DSYNC
         );
     }
 }

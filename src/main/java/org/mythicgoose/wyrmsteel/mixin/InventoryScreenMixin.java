@@ -29,11 +29,9 @@ public abstract class InventoryScreenMixin extends AbstractContainerScreen<Inven
 
     @Inject(method = "renderBg", at = @At("RETURN"))
     private void renderWeaponStashBackground(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY, CallbackInfo ci) {
-        System.out.println("Survival - leftPos: " + this.leftPos + ", topPos: " + this.topPos);
 
         int x = this.leftPos + 76;
         int y = this.topPos + 43;
-        System.out.println("Survival - Background at: " + x + ", " + y);
 
         guiGraphics.blit(INVENTORY_LOCATION, x, y, 7, 83, 18, 18);
     }
