@@ -46,7 +46,7 @@ public record WeaponStashSwapPayload() implements CustomPacketPayload {
                 System.out.println("  Stash slot has: " + stashItem);
                 System.out.println("  Main hand has: " + mainHandItem);
 
-                // Swap the items ONCE
+                // Swap the items
                 ((InventoryAccessor) inventory).weapons_of_death$setWeaponStashSlot(mainHandItem);
                 player.setItemInHand(InteractionHand.MAIN_HAND, stashItem);
 

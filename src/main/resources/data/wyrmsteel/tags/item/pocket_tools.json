@@ -3,6 +3,10 @@
   "values": [
     "wyrmsteel:sickle",
     "wyrmsteel:blowgun",
+    "wyrmsteel:headhunter",
+    "wyrmsteel:headhunter_ammo",
+    "wyrmsteel:headhunter_speed",
+    "wyrmsteel:headhunter_ammo_speed",
     "wyrmsteel:injection",
     "wyrmsteel:injection_milk",
     "wyrmsteel:injection_poison",
@@ -23,6 +27,7 @@
     "wyrmsteel:injection_infesting",
     "wyrmsteel:injection_torpor",
     "wyrmsteel:injection_vulnerable",
+    "wyrmsteel:injection_dimensional_desync",
     "wyrmsteel:totem_of_healthiness",
     "minecraft:totem_of_undying"
   ]

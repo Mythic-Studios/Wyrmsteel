@@ -126,6 +126,54 @@ public class ModRecipeGen extends FabricRecipeProvider {
                 .unlockedBy("needs_wrymsteel", has(ModItems.WYRMSTEEL_INGOT))
                 .save(output);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.HEADHUNTER)
+                .pattern("IIW")
+                .pattern("IN ")
+                .pattern("L  ")
+                .define('I', Items.IRON_INGOT)
+                .define('N', ModItems.WYRMSTEEL_NUGGET)
+                .define('L', Items.LEATHER)
+                .define('W', ModItems.WEAPON_CORE)
+                .unlockedBy("needs_weapon_core", has(ModItems.WEAPON_CORE))
+                .save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.HEADHUNTER_AMMO)
+                .pattern("IIW")
+                .pattern("IN ")
+                .pattern("L  ")
+                .define('I', ModItems.WYRMSTEEL_INGOT)
+                .define('N', ModItems.WYRMSTEEL_NUGGET)
+                .define('L', Items.LEATHER)
+                .define('W', ModItems.WEAPON_CORE)
+                .unlockedBy("needs_weapon_core", has(ModItems.WEAPON_CORE))
+                .unlockedBy("needs_wrymsteel", has(ModItems.WYRMSTEEL_INGOT))
+                .save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.HEADHUNTER_SPEED)
+                .pattern("IIW")
+                .pattern("IN ")
+                .pattern("L  ")
+                .define('I', Items.IRON_INGOT)
+                .define('N', ModItems.WYRMSTEEL_NUGGET)
+                .define('L', ModItems.WARDEN_HIDE)
+                .define('W', ModItems.WEAPON_CORE)
+                .unlockedBy("needs_weapon_core", has(ModItems.WEAPON_CORE))
+                .unlockedBy("needs_warden_hide", has(ModItems.WARDEN_HIDE))
+                .save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.HEADHUNTER_AMMO_SPEED)
+                .pattern("IIW")
+                .pattern("IN ")
+                .pattern("L  ")
+                .define('I', ModItems.WYRMSTEEL_INGOT)
+                .define('N', ModItems.WYRMSTEEL_NUGGET)
+                .define('L', ModItems.WARDEN_HIDE)
+                .define('W', ModItems.WEAPON_CORE)
+                .unlockedBy("needs_weapon_core", has(ModItems.WEAPON_CORE))
+                .unlockedBy("needs_wrymsteel", has(ModItems.WYRMSTEEL_INGOT))
+                .unlockedBy("needs_warden_hide", has(ModItems.WARDEN_HIDE))
+                .save(output);
+
         // Injections
 
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.EMPTY_INJECTION)

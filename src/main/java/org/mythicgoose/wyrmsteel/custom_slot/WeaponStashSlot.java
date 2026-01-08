@@ -2,7 +2,6 @@ package org.mythicgoose.wyrmsteel.custom_slot;
 
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.Slot;
@@ -14,7 +13,6 @@ import org.mythicgoose.wyrmsteel.network.NetworkHelper;
 public class WeaponStashSlot extends Slot {
 
     private final Inventory inventory;
-    private boolean isSyncing = false;
 
     public WeaponStashSlot(Inventory inventory, int slot, int x, int y) {
         super(inventory, slot, x, y);
@@ -33,6 +31,13 @@ public class WeaponStashSlot extends Slot {
         ItemStack oldStack = getItem().copy();
         ((InventoryAccessor) inventory)
                 .weapons_of_death$setWeaponStashSlot(stack);
+
+        // Sync to server if we're on client
+        Player player = inventory.player;
+        if (player != null && player.level().isClientSide) {
+            System.out.println("CLIENT: Sending stash update to server: " + stack);
+            ClientPlayNetworking.send(new C2SWeaponStashSlotClickPacket(stack.copy()));
+        }
 
         // Only notify if the stack actually changed
         if (!ItemStack.matches(oldStack, stack)) {
@@ -57,19 +62,12 @@ public class WeaponStashSlot extends Slot {
             set(current);
         }
 
-        // Force sync after removal
-        Player player = inventory.player;
-        if (player != null && !player.level().isClientSide) {
-            NetworkHelper.syncBackWeaponToClients((ServerPlayer)player, getItem());
-        }
-
         return result;
     }
 
     @Override
     public void onTake(Player player, ItemStack stack) {
         System.out.println("ON TAKE CALLED: " + stack);
-        // Just ensure slot is empty - don't send packet
         set(ItemStack.EMPTY);
         setChanged();
     }
@@ -77,28 +75,23 @@ public class WeaponStashSlot extends Slot {
     @Override
     public void setByPlayer(ItemStack newStack, ItemStack oldStack) {
         System.out.println("SET BY PLAYER CALLED: new=" + newStack + ", old=" + oldStack);
-        // Don't call super - just set directly
         set(newStack);
         setChanged();
     }
 
     @Override
     public void setChanged() {
-        // Mark inventory as changed
         inventory.setChanged();
     }
 
-    // Remove notifySlotChange entirely and handle sync differently
     private void notifySlotChange(ItemStack newStack) {
         Player player = inventory.player;
         if (player == null) return;
 
-        // Server side - sync to clients ONLY
+        // Server side - sync to clients
         if (player instanceof ServerPlayer serverPlayer) {
             NetworkHelper.syncBackWeaponToClients(serverPlayer, newStack);
         }
-        // Client side - DO NOTHING during normal inventory operations
-        // The server will handle it through vanilla's packet system
     }
 
     @Override
@@ -118,6 +111,6 @@ public class WeaponStashSlot extends Slot {
 
     @Override
     public int getMaxStackSize() {
-        return 1; // Only allow 1 item in this slot
+        return 1;
     }
 }

@@ -104,6 +104,14 @@ public class BackWeaponRenderLayer extends RenderLayer<AbstractClientPlayer, Pla
                 matrices.mulPose(Axis.XP.rotationDegrees(152.0F));
                 matrices.mulPose(Axis.YP.rotationDegrees(-90.0F));
                 matrices.mulPose(Axis.ZP.rotationDegrees(180.0F));
+            } else if (stack.is(ModItems.HEADHUNTER)) {
+                scale = 0.6f;
+
+                matrices.translate(0.275, 0.8, 0.225);
+
+                matrices.mulPose(Axis.XP.rotationDegrees(102.5F));
+                matrices.mulPose(Axis.YP.rotationDegrees(-90.0F));
+                matrices.mulPose(Axis.ZP.rotationDegrees(-180.0F));
             } else {
                 scale = 0.6f;
 

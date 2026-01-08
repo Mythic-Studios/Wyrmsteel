@@ -16,7 +16,7 @@ public class ModEnchantments {
     Scythe - Decaying (Has a chance to give attacked entity Wither)
     Sickles - Slice and Dice (Some hits can deal up to 3x base damage and an extremely low chance for hits to be fatal)
     Blowgun - Puncture (Darts are now replaced with darts that prevent health regen), Junglebound (Darts are now replaced with darts give entities perma poison till death or they drink milk)
-    Headhunter (Revolver) - Marksman (Right-Clicking in a direction of an entity marks them, Deals double damage to the marked targets)
+    Headhunter (Revolver) - Marksman (Right-Clicking in a direction of an entity marks them, Deals double damage to the marked targets) - Check item
      */
 
     public static final ResourceKey<Enchantment> DECAYING =
@@ -36,6 +36,9 @@ public class ModEnchantments {
     public static final ResourceKey<Enchantment> BREACHING =
             ResourceKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(Wyrmsteel.MOD_ID, "breaching"));
 
+    public static final ResourceKey<Enchantment> MARKSMAN =
+            ResourceKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(Wyrmsteel.MOD_ID, "marksman"));
+
     public static final ResourceKey<Enchantment> COOLNESS_FACTOR =
             ResourceKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(Wyrmsteel.MOD_ID, "coolness_factor"));
     public static final ResourceKey<Enchantment> SYNCHRONISED =
@@ -48,6 +51,8 @@ public class ModEnchantments {
             TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(Wyrmsteel.MOD_ID, "sickle_enchantable"));
     public static final TagKey<Item> DART_ENCHANTABLE =
             TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(Wyrmsteel.MOD_ID, "dart_enchantable"));
+    public static final TagKey<Item> HEADHUNTER_ENCHANTABLE =
+            TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(Wyrmsteel.MOD_ID, "headhunter_enchantable"));
     public static final TagKey<Item> PEARL_ENCHANTABLE =
             TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(Wyrmsteel.MOD_ID, "pearl_enchantable"));
 
@@ -134,6 +139,18 @@ public class ModEnchantments {
                 Enchantment.definition(
                         items.getOrThrow(DART_ENCHANTABLE), // Your custom tag
                         items.getOrThrow(DART_ENCHANTABLE), // Same tag for primary
+                        5,  // Weight
+                        1,  // Max level
+                        Enchantment.dynamicCost(1, 10),
+                        Enchantment.dynamicCost(1, 10),
+                        2,  // Anvil cost
+                        EquipmentSlotGroup.MAINHAND
+                ))
+        );
+        register(registerable, MARKSMAN, Enchantment.enchantment(
+                Enchantment.definition(
+                        items.getOrThrow(HEADHUNTER_ENCHANTABLE), // Your custom tag
+                        items.getOrThrow(HEADHUNTER_ENCHANTABLE), // Same tag for primary
                         5,  // Weight
                         1,  // Max level
                         Enchantment.dynamicCost(1, 10),

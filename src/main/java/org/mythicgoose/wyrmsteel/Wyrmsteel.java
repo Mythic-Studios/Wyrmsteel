@@ -2,15 +2,14 @@ package org.mythicgoose.wyrmsteel;
 
 import net.fabricmc.api.ModInitializer;
 
-import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
+import org.mythicgoose.wyrmsteel.client.ReloadPacket;
 import org.mythicgoose.wyrmsteel.custom_slot.InventoryAccessor;
 import org.mythicgoose.wyrmsteel.custom_slot.PlayerDeathHandler;
 import org.mythicgoose.wyrmsteel.init.*;
-import org.mythicgoose.wyrmsteel.item.InjectionItem;
 import org.mythicgoose.wyrmsteel.network.ModMessages;
 import org.mythicgoose.wyrmsteel.network.ModPackets;
 import org.mythicgoose.wyrmsteel.network.NetworkHelper;
@@ -39,6 +38,9 @@ public class Wyrmsteel implements ModInitializer {
 
         ModMessages.registerC2SPackets();
         ModMessages.registerS2CPackets();
+
+        ReloadPacket.register();
+        ReloadPacket.registerServerReceiver();
 
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
             ServerPlayer player = handler.getPlayer();

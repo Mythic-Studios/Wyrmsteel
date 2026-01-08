@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "I": {
+      "item": "wyrmsteel:wyrmsteel_ingot"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    },
+    "N": {
+      "item": "wyrmsteel:wyrmsteel_nugget"
+    },
+    "W": {
+      "item": "wyrmsteel:weapon_core"
+    }
+  },
+  "pattern": [
+    "IIW",
+    "IN ",
+    "L  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "wyrmsteel:headhunter_ammo"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "wyrmsteel:headhunter_ammo"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "needs_weapon_core": {
+      "conditions": {
+        "items": [
+          {
+            "items": "wyrmsteel:weapon_core"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "needs_wrymsteel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "wyrmsteel:wyrmsteel_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "needs_weapon_core",
+      "needs_wrymsteel"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "wyrmsteel:headhunter_ammo"
+    ]
+  }
+}

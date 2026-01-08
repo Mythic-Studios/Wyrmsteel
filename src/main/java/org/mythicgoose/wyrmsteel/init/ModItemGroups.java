@@ -31,6 +31,7 @@ public class ModItemGroups {
                             output.accept(ModItems.SCYTHE);
                             output.accept(ModItems.SICKLE);
                             output.accept(ModItems.BLOWGUN);
+                            output.accept(ModItems.HEADHUNTER);
 
                             output.accept(ModItems.UTILITY_CORE);
                             output.accept(ModItems.EMPTY_INJECTION);

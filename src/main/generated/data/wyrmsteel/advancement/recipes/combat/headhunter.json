@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "wyrmsteel:headhunter"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "needs_weapon_core": {
+      "conditions": {
+        "items": [
+          {
+            "items": "wyrmsteel:weapon_core"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "needs_weapon_core"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "wyrmsteel:headhunter"
+    ]
+  }
+}

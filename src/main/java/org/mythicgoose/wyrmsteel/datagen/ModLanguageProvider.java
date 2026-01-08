@@ -21,10 +21,15 @@ public class ModLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.UTILITY_CORE, "Utility Core");
         translationBuilder.add(ModItems.WYRMSTEEL_INGOT, "Wyrmsteel Ingot");
         translationBuilder.add(ModItems.WYRMSTEEL_NUGGET, "Wyrmsteel Nugget");
+        translationBuilder.add(ModItems.WARDEN_HIDE, "Warden Hide");
 
         translationBuilder.add(ModItems.SCYTHE, "Scythe");
         translationBuilder.add(ModItems.SICKLE, "Sickle");
         translationBuilder.add(ModItems.BLOWGUN, "Blowgun");
+        translationBuilder.add(ModItems.HEADHUNTER, "Headhunter");
+        translationBuilder.add(ModItems.HEADHUNTER_AMMO, "Headhunter");
+        translationBuilder.add(ModItems.HEADHUNTER_SPEED, "Headhunter");
+        translationBuilder.add(ModItems.HEADHUNTER_AMMO_SPEED, "Headhunter");
 
         translationBuilder.add(ModItems.EMPTY_INJECTION, "Injection");
         translationBuilder.add(ModItems.TOTEM_OF_HEALTHINESS, "Totem of Healthiness");
@@ -69,6 +74,8 @@ public class ModLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("enchantment.wyrmsteel.breaching", "Breaching");
         translationBuilder.add("enchantment.wyrmsteel.breaching.desc", "Darts are now replaced with darts give entities Vulnerability till death or they drink milk");
 
+        translationBuilder.add("enchantment.wyrmsteel.marksman", "Marksman");
+        translationBuilder.add("enchantment.wyrmsteel.marksman.desc", "Enables the ability to mark entities");
         translationBuilder.add("enchantment.wyrmsteel.coolness_factor", "Coolness Factor");
         translationBuilder.add("enchantment.wyrmsteel.coolness_factor.desc", "When thrown it reduces the time needed to wait to throw the pearl again");
         translationBuilder.add("enchantment.wyrmsteel.synchronised", "Synchronization");
@@ -77,6 +84,6 @@ public class ModLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("key.categories.wyrmsteel", "Wyrmsteel");
         translationBuilder.add("key.wyrmsteel.swap_slots", "Swap Backslot Item");
         translationBuilder.add("key.wyrmsteel.equip_back_weapon", "Equip Backslot Item");
-
+        translationBuilder.add("key.wyrmsteel.reload", "Reload Headhunter");
     }
 }
