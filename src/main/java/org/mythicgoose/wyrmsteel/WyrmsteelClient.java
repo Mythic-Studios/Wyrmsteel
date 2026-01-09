@@ -6,7 +6,12 @@ import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
+import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import org.mythicgoose.wyrmsteel.client.WeaponStashKeybindHandler;
@@ -19,6 +24,7 @@ import org.mythicgoose.wyrmsteel.init.ModParticles;
 import org.mythicgoose.wyrmsteel.item.InjectionItem;
 import org.mythicgoose.wyrmsteel.keybinding.ClientTickHandler;
 import org.mythicgoose.wyrmsteel.keybinding.KeybindRegistry;
+import org.mythicgoose.wyrmsteel.network.ClientPacketHandler;
 import org.mythicgoose.wyrmsteel.network.S2CBackWeaponSyncPacket;
 import org.mythicgoose.wyrmsteel.network.TotemAnimationPayload;
 import org.mythicgoose.wyrmsteel.particle.BloodParticle;
@@ -56,6 +62,16 @@ public class WyrmsteelClient implements ClientModInitializer {
                 TotemAnimationPayload.ID,
                 TotemAnimationPayload::handle
         );
+
+//        FabricLoader.getInstance().getModContainer(Wyrmsteel.MOD_ID).ifPresent(modContainer -> {
+//            ResourceManagerHelper.registerBuiltinResourcePack(ResourceLocation.fromNamespaceAndPath(Wyrmsteel.MOD_ID, "dungeon_theme"), modContainer, ResourcePackActivationType.NORMAL);
+//        });
+//        FabricLoader.getInstance().getModContainer(Wyrmsteel.MOD_ID).ifPresent(modContainer -> {
+//            ResourceManagerHelper.registerBuiltinResourcePack(ResourceLocation.fromNamespaceAndPath(Wyrmsteel.MOD_ID, "natural_theme"), modContainer, ResourcePackActivationType.NORMAL);
+//        });
+
+        // Register client-side packet handlers
+        ClientPacketHandler.registerClientHandlers();
 
         EntityRendererRegistry.register(ModEntities.DART, DartRenderer::new);
 

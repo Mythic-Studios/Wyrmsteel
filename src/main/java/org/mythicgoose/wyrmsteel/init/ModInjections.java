@@ -6,6 +6,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
+import org.mythicgoose.mythic_core.indexing.ItemRegistrar;
 import org.mythicgoose.wyrmsteel.Wyrmsteel;
 import org.mythicgoose.wyrmsteel.item.InjectionItem;
 
@@ -13,6 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ModInjections {
+    static {
+        ItemRegistrar.setRegistrarID(Wyrmsteel.MOD_ID);
+    }
+    
     // Make it mutable so we can add items as we create them
     public static final List<Item> ALL_INJECTIONS = new ArrayList<>();
 

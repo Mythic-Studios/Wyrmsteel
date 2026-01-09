@@ -13,6 +13,7 @@ import org.mythicgoose.wyrmsteel.network.NetworkHelper;
 public class WeaponStashSlot extends Slot {
 
     private final Inventory inventory;
+    private boolean isSyncing = false; // Prevent infinite packet loops
 
     public WeaponStashSlot(Inventory inventory, int slot, int x, int y) {
         super(inventory, slot, x, y);
@@ -28,20 +29,43 @@ public class WeaponStashSlot extends Slot {
     @Override
     public void set(ItemStack stack) {
         System.out.println("SET CALLED: " + stack);
+
+        // Prevent recursive packet sends
+        if (isSyncing) {
+            ((InventoryAccessor) inventory)
+                    .weapons_of_death$setWeaponStashSlot(stack);
+            return;
+        }
+
         ItemStack oldStack = getItem().copy();
         ((InventoryAccessor) inventory)
                 .weapons_of_death$setWeaponStashSlot(stack);
 
-        // Sync to server if we're on client
+        // Only send packet if on client side AND stack changed
         Player player = inventory.player;
-        if (player != null && player.level().isClientSide) {
+        if (player != null && player.level().isClientSide && !ItemStack.matches(oldStack, stack)) {
             System.out.println("CLIENT: Sending stash update to server: " + stack);
             ClientPlayNetworking.send(new C2SWeaponStashSlotClickPacket(stack.copy()));
         }
 
-        // Only notify if the stack actually changed
-        if (!ItemStack.matches(oldStack, stack)) {
-            notifySlotChange(stack);
+        // Notify server-side change
+        if (player instanceof ServerPlayer serverPlayer && !ItemStack.matches(oldStack, stack)) {
+            notifySlotChange(serverPlayer, stack);
+        }
+    }
+
+    /**
+     * Set the item without triggering packet sends
+     * Use this when receiving packets from server
+     */
+    public void setQuietly(ItemStack stack) {
+        isSyncing = true;
+        try {
+            System.out.println("SET QUIETLY CALLED: " + stack);
+            ((InventoryAccessor) inventory)
+                    .weapons_of_death$setWeaponStashSlot(stack);
+        } finally {
+            isSyncing = false;
         }
     }
 
@@ -55,28 +79,38 @@ public class WeaponStashSlot extends Slot {
 
         ItemStack result;
         if (current.getCount() <= amount) {
+            // Taking all items
             result = current.copy();
-            set(ItemStack.EMPTY);
+            ((InventoryAccessor) inventory)
+                    .weapons_of_death$setWeaponStashSlot(ItemStack.EMPTY);
         } else {
+            // Taking partial stack
             result = current.split(amount);
-            set(current);
+            ((InventoryAccessor) inventory)
+                    .weapons_of_death$setWeaponStashSlot(current);
         }
 
+        setChanged();
         return result;
     }
 
     @Override
     public void onTake(Player player, ItemStack stack) {
         System.out.println("ON TAKE CALLED: " + stack);
-        set(ItemStack.EMPTY);
+        // DON'T call set(ItemStack.EMPTY) here!
+        // The remove() method already handled emptying the slot
         setChanged();
     }
 
     @Override
     public void setByPlayer(ItemStack newStack, ItemStack oldStack) {
         System.out.println("SET BY PLAYER CALLED: new=" + newStack + ", old=" + oldStack);
-        set(newStack);
-        setChanged();
+
+        // Only update if there's an actual change
+        if (!ItemStack.matches(newStack, oldStack)) {
+            set(newStack);
+            setChanged();
+        }
     }
 
     @Override
@@ -84,14 +118,9 @@ public class WeaponStashSlot extends Slot {
         inventory.setChanged();
     }
 
-    private void notifySlotChange(ItemStack newStack) {
-        Player player = inventory.player;
-        if (player == null) return;
-
-        // Server side - sync to clients
-        if (player instanceof ServerPlayer serverPlayer) {
-            NetworkHelper.syncBackWeaponToClients(serverPlayer, newStack);
-        }
+    private void notifySlotChange(ServerPlayer serverPlayer, ItemStack newStack) {
+        // Sync to all clients watching this player
+        NetworkHelper.syncBackWeaponToClients(serverPlayer, newStack);
     }
 
     @Override
@@ -101,12 +130,12 @@ public class WeaponStashSlot extends Slot {
 
     @Override
     public boolean mayPlace(ItemStack stack) {
-        return true;
+        return true; // Add your weapon validation logic here if needed
     }
 
     @Override
     public boolean mayPickup(Player player) {
-        return true;
+        return true; // CRITICAL: must return true for manual pickup
     }
 
     @Override
