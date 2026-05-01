@@ -187,15 +187,6 @@ public class ModInjections {
                     100000, 2
             )
     );
-    public static Item INJECTION_DIMENSIONAL_DSYNC = createItem("injection_dimensional_desync",
-            new InjectionItem(
-                    new Item.Properties().stacksTo(1),
-                    ModEffects.DIMENSIONAL_DESYNC.value(),
-                    0x2f27a1,   // ItemEffectColor (overlay)
-                    0xFFFFFF,   // NoUse (base)
-                    100000, 2
-            )
-    );
 
 
     private static Item createItem(String name, Item item) {

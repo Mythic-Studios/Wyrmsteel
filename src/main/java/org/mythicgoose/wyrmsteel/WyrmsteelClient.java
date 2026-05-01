@@ -101,8 +101,7 @@ public class WyrmsteelClient implements ClientModInitializer {
                 ModInjections.INJECTION_WEAVING,
                 ModInjections.INJECTION_OOZING,
                 ModInjections.INJECTION_WIND_CHARGED,
-                ModInjections.INJECTION_INFESTING,
-                ModInjections.INJECTION_DIMENSIONAL_DSYNC
+                ModInjections.INJECTION_INFESTING
         );
     }
 }

@@ -226,13 +226,6 @@ public class ModRecipeGen extends FabricRecipeProvider {
                 .unlockedBy("empty_injection", has(ModItems.EMPTY_INJECTION))
                 .save(output);
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModInjections.INJECTION_DIMENSIONAL_DSYNC)
-                .requires(ModItems.EMPTY_INJECTION)
-                .requires(Items.ENDER_PEARL)
-                .requires(Items.CHORUS_FRUIT)
-                .unlockedBy("empty_injection", has(ModItems.EMPTY_INJECTION))
-                .save(output);
-
         ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModInjections.INJECTION_STRENGTH)
                 .requires(ModItems.EMPTY_INJECTION)
                 .requires(Items.BLAZE_POWDER)

@@ -50,8 +50,6 @@ public class CustomEnderpearlItem extends Item {
             level.addFreshEntity(thrownEnderpearl);
         }
 
-        handleEffect(player, itemStack);
-
         player.awardStat(Stats.ITEM_USED.get(this));
 
         if (!player.isCreative()) {
@@ -61,15 +59,7 @@ public class CustomEnderpearlItem extends Item {
         return InteractionResultHolder.sidedSuccess(itemStack, level.isClientSide());
     }
 
-    private void handleEffect(Player player, ItemStack itemStack) {
-        int level = getEnchantmentLevel(itemStack, player, ModEnchantments.SYNCHRONISED);
 
-        if (!(level > 0)) {
-            player.addEffect(new MobEffectInstance(ModEffects.DIMENSIONAL_DESYNC, 5000, 0));
-        } else {
-            COOLDOWN = COOLDOWN * 4;
-        }
-    }
 
     private void handleCooldowns(Player player, ItemStack itemStack, int cooldown) {
         int level = getEnchantmentLevel(itemStack, player, ModEnchantments.COOLNESS_FACTOR);

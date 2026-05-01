@@ -52,7 +52,6 @@ public class ModLanguageProvider extends FabricLanguageProvider {
 
         translationBuilder.add("effect.wyrmsteel.torpor", "Torpor");
         translationBuilder.add("effect.wyrmsteel.vulnerable", "Vulnerability");
-        translationBuilder.add("effect.wyrmsteel.dimensional_desync", "Dimensional Desynchronization");
 
         translationBuilder.add("itemgroup.wyrmsteel.core", "Wyrmsteel");
         translationBuilder.add("itemgroup.wyrmsteel.injections", "Wyrmsteel: Injections");
