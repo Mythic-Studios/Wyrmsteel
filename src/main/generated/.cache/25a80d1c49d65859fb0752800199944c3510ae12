@@ -1,4 +1,4 @@
-// 1.21.1	2026-01-08T11:04:59.3324241	Wyrmsteel/Model Definitions
+// 1.21.1	2026-05-04T09:36:03.6069417	Wyrmsteel/Model Definitions
 70fe00619084a0633b2bf1992a3dcc8289756967 assets\wyrmsteel\models\item\injection.json
 7b1b8aeebb5c74a62cea488324f1ba490feb3bee assets\wyrmsteel\models\item\totem_of_healthiness.json
 3fbd4c192100daed324730ea3518936d81055704 assets\wyrmsteel\models\item\injection_poison.json
@@ -13,11 +13,10 @@ e0c7872b18bb366f98b9f3083d7539abcfbabcac assets\wyrmsteel\models\item\utility_co
 3fbd4c192100daed324730ea3518936d81055704 assets\wyrmsteel\models\item\injection_milk.json
 3fbd4c192100daed324730ea3518936d81055704 assets\wyrmsteel\models\item\injection_water_breathing.json
 3fbd4c192100daed324730ea3518936d81055704 assets\wyrmsteel\models\item\injection_oozing.json
-3fbd4c192100daed324730ea3518936d81055704 assets\wyrmsteel\models\item\injection_dimensional_desync.json
 3fbd4c192100daed324730ea3518936d81055704 assets\wyrmsteel\models\item\injection_weaving.json
 31d282d4f316919618284face0a81dc787b6daf9 assets\wyrmsteel\models\item\wyrmsteel_ingot.json
-3fbd4c192100daed324730ea3518936d81055704 assets\wyrmsteel\models\item\injection_wind_charged.json
 a93c896b061957e6318c17c91fb13a5165a82abc assets\wyrmsteel\models\item\warden_hide.json
+3fbd4c192100daed324730ea3518936d81055704 assets\wyrmsteel\models\item\injection_wind_charged.json
 3fbd4c192100daed324730ea3518936d81055704 assets\wyrmsteel\models\item\injection_slowness.json
 6653232c30c07078f8bc64e4d66786baa69f6493 assets\wyrmsteel\models\item\wyrmsteel_nugget.json
 3fbd4c192100daed324730ea3518936d81055704 assets\wyrmsteel\models\item\injection_wither.json

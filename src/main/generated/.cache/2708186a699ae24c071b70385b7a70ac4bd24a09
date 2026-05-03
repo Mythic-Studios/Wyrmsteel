@@ -1,4 +1,4 @@
-// 1.21.1	2026-01-08T11:04:59.3334247	Wyrmsteel/Recipes
+// 1.21.1	2026-05-04T09:36:03.6079418	Wyrmsteel/Recipes
 c201eb0a745cf1fd34ca002d75839e3d078339fe data\wyrmsteel\advancement\recipes\tools\injection_infesting.json
 ed215bc2308451d48148931b6424dd4a977891b1 data\wyrmsteel\recipe\weapon_core.json
 efcdf960903843acb028188c902c9452915e0616 data\wyrmsteel\recipe\headhunter_ammo_speed.json
@@ -7,7 +7,6 @@ aa4d637c8e0e79baec7caa8e9f079aec5059c61f data\wyrmsteel\recipe\injection_fire_re
 f15400d4a5f1f8684c18c28855da49e62061c36b data\wyrmsteel\recipe\totem_of_healthiness.json
 84c7b917c3e51f4f9a699fe5b5c30529d6ae54b0 data\wyrmsteel\advancement\recipes\tools\alternative_wither_injection_path.json
 da7ba5b4bcef3f23855a681a0aaf2ab4bf9a2632 data\wyrmsteel\advancement\recipes\tools\injection_milk.json
-a44ce7503a1660573592a6f5f4676423c295d475 data\wyrmsteel\recipe\injection_dimensional_desync.json
 c431c056ad1fcc834b71eb5c78d133696fddd3a2 data\wyrmsteel\recipe\injection_speed.json
 7ba2a08b5e4717453e5fd6f78490a043115170f3 data\wyrmsteel\advancement\recipes\tools\main_invis.json
 d5912443d645f19242dd7f77f2ede5c5e0598a66 data\wyrmsteel\recipe\injection_infesting.json
@@ -37,8 +36,8 @@ c7cc96fd85236521085be0011265044df139823b data\wyrmsteel\advancement\recipes\tool
 49219b71469eb88cbb7650a9521c3677e8ceba0d data\wyrmsteel\advancement\recipes\combat\scythe.json
 864c9b69ccef35a13001a9ff2733e1eca038944c data\wyrmsteel\advancement\recipes\combat\headhunter_ammo_speed.json
 d55bb5fa4a11d29cdf33b24b29d9f0b19135c4ff data\wyrmsteel\advancement\recipes\combat\headhunter.json
-aee7a530ddc28ad793aeb332601207ad35b9af83 data\wyrmsteel\advancement\recipes\tools\injection_torpor.json
 8de3a076aa2bdbed9e20bf73ad2d2012b4167f23 data\wyrmsteel\recipe\wyrmsteel_nugget.json
+aee7a530ddc28ad793aeb332601207ad35b9af83 data\wyrmsteel\advancement\recipes\tools\injection_torpor.json
 efd59e4795de719ba3a47740d8f3c2bb484370a4 data\wyrmsteel\advancement\recipes\tools\infinite_pearl.json
 2546715323eadf6a25953b993394405a2de50911 data\wyrmsteel\recipe\wyrmsteel_ingot.json
 4e31fcd5cf0639e292a1c788ead4ab6cb894e4ee data\wyrmsteel\recipe\headhunter_ammo.json
@@ -72,6 +71,5 @@ d26bba39a33ee84e506caba9e8056f554d484b9a data\wyrmsteel\advancement\recipes\tool
 c3c8d0f4246f891224a3fd2dc6fdb5246756f628 data\wyrmsteel\recipe\injection_slow_fall.json
 fb8df6e75e9700111b9ba9acdb941f6d6e4b18b0 data\wyrmsteel\recipe\injection_leaping.json
 d2a984cc84892d20ee0ed7711e721999c50d8764 data\wyrmsteel\recipe\injection_strength.json
-f5500bc26c16023b60d881f1c89ebaed968c1c5f data\wyrmsteel\advancement\recipes\tools\injection_dimensional_desync.json
 82d13cfe40eeb43b7eef1b1a770fac8a03980c18 data\wyrmsteel\advancement\recipes\tools\injection_leaping.json
 3df422138329092f1a11ef0cce267f0af1a8a026 data\wyrmsteel\advancement\recipes\tools\injection_fire_resist.json
